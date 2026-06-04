@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇹 Italy Trip · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --parchment: #F2EDE4;
+    --terracotta: #C4622D;
+    --terracotta-light: #E8906A;
+    --terracotta-pale: #F5E6DE;
+    --sage: #4A6741;
+    --sage-light: #7A9E72;
+    --sage-pale: #E2EBE0;
+    --cobalt: #1B3F6E;
+    --cobalt-light: #4A7BAF;
+    --cobalt-pale: #DCE8F4;
+    --gold: #B8882A;
+    --gold-pale: #F5EDD8;
+    --ink: #1C1814;
+    --ink-mid: #4A4239;
+    --ink-light: #8A7D70;
+    --border: rgba(28,24,20,0.12);
+    --border-strong: rgba(28,24,20,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(196,98,45,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 20%, rgba(27,63,110,0.2) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-flag { font-size: 3rem; margin-bottom: 1rem; display: block; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--terracotta-light); }
+  .hero-sub {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.6);
+    margin-bottom: 2rem;
+  }
+  .hero-route {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(250,247,242,0.08);
+    border: 1px solid rgba(250,247,242,0.15);
+    border-radius: 100px;
+    padding: 0.5rem 1.25rem;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: rgba(250,247,242,0.75);
+  }
+  .hero-route span { color: rgba(250,247,242,0.4); }
+
+  /* NAV PILLS */
+  .nav-strip {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    scrollbar-width: none;
+    align-items: center;
+  }
+  .nav-strip::-webkit-scrollbar { display: none; }
+  .nav-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    white-space: nowrap;
+    margin-right: 0.25rem;
+    flex-shrink: 0;
+  }
+  .nav-pill {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .nav-pill:hover { background: var(--parchment); border-color: var(--border-strong); color: var(--ink); }
+  .nav-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dot-color, var(--ink-light)); flex-shrink: 0; }
+
+  /* MAIN LAYOUT */
+  .main { max-width: 780px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  /* CITY SECTION */
+  .city-section { margin-bottom: 3rem; }
+  .city-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1.5px solid var(--border-strong);
+  }
+  .city-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .city-dates {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .city-accommodation {
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: -0.75rem;
+    margin-bottom: 1.25rem;
+    padding-left: 2px;
+  }
+
+  /* CITY COLOR THEMES */
+  .milan .city-name { color: var(--cobalt); }
+  .milan .city-header { border-color: rgba(27,63,110,0.2); }
+  .rome .city-name { color: var(--terracotta); }
+  .rome .city-header { border-color: rgba(196,98,45,0.2); }
+  .venice .city-name { color: var(--sage); }
+  .venice .city-header { border-color: rgba(74,103,65,0.2); }
+
+  /* DAY CARD */
+  .day-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .day-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--parchment);
+  }
+  .day-date {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .day-body { padding: 0.5rem 0; }
+
+  /* EVENT BLOCK */
+  .event {
+    display: flex;
+    gap: 0.875rem;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .event:last-child { border-bottom: none; }
+  .event-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 15px;
+    margin-top: 1px;
+  }
+  .icon-food { background: var(--gold-pale); }
+  .icon-see { background: var(--cobalt-pale); }
+  .icon-walk { background: var(--sage-pale); }
+  .icon-sleep { background: #EEE8F8; }
+  .icon-shop { background: #F8E8EE; }
+  .icon-travel { background: var(--sage-pale); }
+  .event-body { flex: 1; min-width: 0; }
+  .event-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 3px; }
+  .event-note { font-size: 12.5px; color: var(--ink-light); line-height: 1.55; }
+  .event-time { font-size: 11px; font-weight: 500; color: var(--ink-mid); margin-bottom: 2px; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 100px;
+  }
+  .tag-gf { background: var(--sage-pale); color: var(--sage); }
+  .tag-df { background: var(--cobalt-pale); color: var(--cobalt); }
+  .tag-res { background: #F8E8EE; color: #8B3056; }
+  .tag-tip { background: var(--gold-pale); color: var(--gold); }
+
+  /* TRAIN BAR */
+  .train-bar {
+    margin: 0.5rem 1.25rem 0.75rem;
+    background: #FDF0EB;
+    border: 1px solid #E8B4A0;
+    border-radius: 12px;
+    padding: 0.875rem 1.125rem;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+  .train-emoji { font-size: 18px; flex-shrink: 0; }
+  .train-info { flex: 1; min-width: 0; }
+  .train-route { font-size: 13px; font-weight: 500; color: #7A2E10; }
+  .train-detail { font-size: 11px; color: #B56040; margin-top: 2px; }
+  .train-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #C4622D;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+
+  /* DIVIDER in card */
+  .card-divider { height: 1px; background: var(--border); margin: 0.25rem 0; }
+
+  /* FOOTER NOTE */
+  .footer-note {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-top: 2rem;
+  }
+  .footer-note strong { font-weight: 500; color: var(--ink); }
+
+  /* RESPONSIVE */
+  @media (max-width: 540px) {
+    .hero { padding: 3rem 1.25rem 2rem; }
+    .main { padding: 1.5rem 1rem 3rem; }
+    .day-card-header { flex-wrap: wrap; }
+    .train-bar { flex-wrap: wrap; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-flag">🇮🇹</span>
+  <h1>La <em>Dolce</em> Vita</h1>
+  <p class="hero-sub">Family Italy Trip · June 2026</p>
+  <div class="hero-route">
+    Milan <span>→</span> Rome <span>→</span> Venice
+  </div>
+</div>
+
+<nav class="nav-strip" aria-label="Jump to date">
+  <span class="nav-label">Jump to</span>
+  <a class="nav-pill" href="#day-jun10"><span class="dot" style="--dot-color:#4A7BAF"></span> Jun 10</a>
+  <a class="nav-pill" href="#day-jun11"><span class="dot" style="--dot-color:#C4622D"></span> Jun 11</a>
+  <a class="nav-pill" href="#day-jun12"><span class="dot" style="--dot-color:#C4622D"></span> Jun 12</a>
+  <a class="nav-pill" href="#day-jun13"><span class="dot" style="--dot-color:#C4622D"></span> Jun 13</a>
+  <a class="nav-pill" href="#day-jun14"><span class="dot" style="--dot-color:#4A6741"></span> Jun 14</a>
+  <a class="nav-pill" href="#day-jun15"><span class="dot" style="--dot-color:#4A6741"></span> Jun 15</a>
+</nav>
+
+<main class="main">
+
+  <!-- ═══════════════ MILAN ═══════════════ -->
+  <section class="city-section milan" id="milan">
+    <div class="city-header">
+      <h2 class="city-name">Milan</h2>
+      <span class="city-dates">Wed, Jun 10</span>
+    </div>
+    <p class="city-accommodation">📍 Milano Centrale area · Departure day</p>
+
+    <div class="day-card" id="day-jun10">
+      <div class="day-card-header">
+        <span class="day-date">Wed, Jun 10</span>
+        <span class="day-title">Lunch before the train</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-food">☕</div>
+          <div class="event-body">
+            <div class="event-title">Officina Zero — GF bakery near Centrale</div>
+            <div class="event-note">Vle Andrea Doria, 44 · 4.6 ⭐ · Open 8 AM–6:30 PM. A fully gluten-free bakery beloved by celiacs — reviewers call it the best GF croissants in all of Italy. Perfect for lunch before the train.</div>
+            <div class="tags">
+              <span class="tag tag-gf">✓ GF</span>
+              <span class="tag tag-tip">💡 5 min from station</span>
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🍽️</div>
+          <div class="event-body">
+            <div class="event-title">Alternative: Ristorante Da Gigi</div>
+            <div class="event-note">Via Mauro Macchi, 2 · 4.3 ⭐ · Classic Italian trattoria steps from Centrale. Great for a proper sit-down lunch — try the cotoletta Milanese or fritto misto. Mention dietary needs.</div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="train-bar">
+          <span class="train-emoji">🚄</span>
+          <div class="train-info">
+            <div class="train-route">Trenitalia · Milano Centrale → Roma Termini</div>
+            <div class="train-detail">Train 9991 · Coach 8 · Seats 16, 17, 18, 19, 20 · Smart</div>
+          </div>
+          <span class="train-time">5:15 PM → 8:26 PM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ROME ═══════════════ -->
+  <section class="city-section rome" id="rome">
+    <div class="city-header">
+      <h2 class="city-name">Rome</h2>
+      <span class="city-dates">Jun 10–13</span>
+    </div>
+    <p class="city-accommodation">📍 Airbnb Trifole · Via Candia, 55, Prati, 00192</p>
+
+    <!-- Wed Jun 10 -->
+    <div class="day-card" id="day-jun10-rome">
+      <div class="day-card-header">
+        <span class="day-date">Wed, Jun 10</span>
+        <span class="day-title">Arrival night</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-sleep">🏠</div>
+          <div class="event-body">
+            <div class="event-title">Arrive ~8:30 PM — check into Airbnb</div>
+            <div class="event-note">Grab a quick dinner nearby. La Cantina di Cesare (Via Candia 42 · 4.7 ⭐) is steps away and serves until 11 PM — a cozy, family-run Roman osteria. Or Forno Feliziani (Via Candia 61) if still open for a lighter bite.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thu Jun 11 -->
+    <div class="day-card" id="day-jun11">
+      <div class="day-card-header">
+        <span class="day-date">Thu, Jun 11</span>
+        <span class="day-title">Colosseum & Ancient Rome</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-food">☕</div>
+          <div class="event-body">
+            <div class="event-time">Early morning</div>
+            <div class="event-title">Breakfast — Forno Feliziani or Caffè delle Commari</div>
+            <div class="event-note">Forno Feliziani (Via Candia 61) is literally next door — grab pizza al taglio or pastry early. Or Caffè delle Commari (Via Santamaura 22 · 4.8 ⭐) for a sit-down coffee and sandwich.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Leave by 7:30 AM</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-see">🏛️</div>
+          <div class="event-body">
+            <div class="event-time">8:00 AM – ~11:00 AM</div>
+            <div class="event-title">Colosseum, Roman Forum & Palatine Hill</div>
+            <div class="event-note">Guided tour booked (~2.5–3 hrs). ~20 min by Uber/taxi from Prati. All three ancient sites on one ticket — don't miss the underground chambers at the Colosseum.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🍝</div>
+          <div class="event-body">
+            <div class="event-time">~12:00 PM</div>
+            <div class="event-title">Lunch near the Colosseum</div>
+            <div class="event-note">Pasqualino al Colosseo (Via dei SS. Quattro, 66 · 4.7 ⭐) — a Roman institution since 1956, just around the corner. Huge menu, friendly staff, GF/DF accommodating. Or Ristoro della Salute for a view of the Colosseum while you eat.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-walk">🚶</div>
+          <div class="event-body">
+            <div class="event-time">2:00 PM – 6:00 PM</div>
+            <div class="event-title">Afternoon stroll → Pandalì + Gelateria dei Gracchi</div>
+            <div class="event-note">Wander toward Campo de' Fiori or Trastevere. Stop at Pandalì for a GF+DF-friendly bite, then swing by Gelateria dei Gracchi (Via dei Gracchi 272) — one of Rome's best, with confirmed GF and dairy-free options.</div>
+            <div class="tags"><span class="tag tag-gf">✓ GF</span><span class="tag tag-df">✓ DF</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🌙</div>
+          <div class="event-body">
+            <div class="event-time">7:30 PM</div>
+            <div class="event-title">Dinner — Tonnarello San Pietro</div>
+            <div class="event-note">Reservation confirmed for 5. Classic Roman trattoria — cacio e pepe, amatriciana, carbonara. Mention GF/DF needs when you confirm the reservation.</div>
+            <div class="tags"><span class="tag tag-res">📋 Reservation confirmed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fri Jun 12 -->
+    <div class="day-card" id="day-jun12">
+      <div class="day-card-header">
+        <span class="day-date">Fri, Jun 12</span>
+        <span class="day-title">Monti Shopping + Vatican</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-food">☕</div>
+          <div class="event-body">
+            <div class="event-time">Morning</div>
+            <div class="event-title">Coffee & pastry — Café Mémé Bistrot</div>
+            <div class="event-note">Via degli Scipioni, 111 · 4.6 ⭐ · 5 min walk from the Airbnb. Tiny, cozy, and beloved — great for bagels, omelets, avocado toast, and cappuccino.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-shop">👜</div>
+          <div class="event-body">
+            <div class="event-time">~10:00 AM – 12:00 PM</div>
+            <div class="event-title">Morning stroll — Monti neighborhood</div>
+            <div class="event-note">Metro B to Colosseo, then walk up into Monti. Rome's best vintage shopping — Via del Boschetto and Via dei Serpenti are the main streets. Perfect for ceramics, leather goods, and unique souvenirs.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Shops open ~10 AM</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🍽️</div>
+          <div class="event-body">
+            <div class="event-time">~12:30 PM</div>
+            <div class="event-title">Brunch — Mama Eat (GF pasta specialist)</div>
+            <div class="event-note">Via dei Vascellari, 30 in Trastevere · All pasta available gluten-free, dairy-free options too. One of the best GF pasta restaurants in Rome — don't miss it.</div>
+            <div class="tags"><span class="tag tag-gf">✓ GF</span><span class="tag tag-df">✓ DF</span><span class="tag tag-res">📋 Book ahead</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-see">⛪</div>
+          <div class="event-body">
+            <div class="event-time">4:00 PM</div>
+            <div class="event-title">Vatican Museums & Sistine Chapel</div>
+            <div class="event-note">A late afternoon slot is smart — crowds thin out noticeably. Sistine Chapel + Gallery of Maps are the highlights. Plan ~2–2.5 hours. The Museums are a 10 min walk from the Airbnb on Via Candia.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Cover shoulders & knees — bring a scarf</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🌙</div>
+          <div class="event-body">
+            <div class="event-time">Late evening</div>
+            <div class="event-title">Dinner — Il Segreto or La Cantina di Cesare</div>
+            <div class="event-note">Il Segreto (Via Candia 71 · 4.8 ⭐) is directly on your street — complimentary prosecco on arrival, excellent calamari and cacio e pepe. Or La Cantina di Cesare (Via Candia 42 · 4.7 ⭐) for a warm, family-run vibe. Both GF-accommodating.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Make a reservation — both fill up</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sat Jun 13 -->
+    <div class="day-card" id="day-jun13">
+      <div class="day-card-header">
+        <span class="day-date">Sat, Jun 13</span>
+        <span class="day-title">Chill morning → Venice</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-food">☕</div>
+          <div class="event-body">
+            <div class="event-time">Morning</div>
+            <div class="event-title">Leisurely breakfast — Caffè delle Commari</div>
+            <div class="event-note">Via Santamaura 22 · 4.8 ⭐ · Open from 6:30 AM, just 5 min from the Airbnb. A perfect last Roman breakfast before checkout.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-sleep">🧳</div>
+          <div class="event-body">
+            <div class="event-time">11:00 AM</div>
+            <div class="event-title">Check out → head to Roma Termini</div>
+            <div class="event-note">Luggage storage available at Termini if you have time to explore before the train. Grab a last espresso at the station.</div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="train-bar">
+          <span class="train-emoji">🚄</span>
+          <div class="train-info">
+            <div class="train-route">Trenitalia · Roma Termini → Venezia Santa Lucia</div>
+            <div class="train-detail">Train 8928 · Coach 7 · Seats 8, 9, 10, 11, 13 · Smart</div>
+          </div>
+          <span class="train-time">3:55 PM → 7:55 PM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ VENICE ═══════════════ -->
+  <section class="city-section venice" id="venice">
+    <div class="city-header">
+      <h2 class="city-name">Venice</h2>
+      <span class="city-dates">Jun 13–15</span>
+    </div>
+    <p class="city-accommodation">📍 Hyatt Centric · Murano Island</p>
+
+    <!-- Sat Jun 13 evening -->
+    <div class="day-card" id="day-jun13-venice">
+      <div class="day-card-header">
+        <span class="day-date">Sat, Jun 13</span>
+        <span class="day-title">Arrival evening — Murano</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-travel">⛵</div>
+          <div class="event-body">
+            <div class="event-time">~8:00 PM</div>
+            <div class="event-title">Arrive — vaporetto to Murano</div>
+            <div class="event-note">From Santa Lucia station, take vaporetto Line 4.1 or 4.2 directly to Murano (~45 min, €9.50 pp). Or splurge on a private water taxi (~€80–100 for the group) for a more dramatic arrival. Note: gondolas don't travel to Murano.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Buy a 24-hr vaporetto pass (€25) — use it all day Sunday too</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🌙</div>
+          <div class="event-body">
+            <div class="event-title">Dinner — La Fornace Murano</div>
+            <div class="event-note">Fondamenta Manin, 1 · 4.7 ⭐ · Gorgeous waterside restaurant with Murano glass on every table. Reviewers rave about the octopus and shrimp pasta. Ask about GF pasta options when booking.</div>
+            <div class="tags"><span class="tag tag-res">📋 Reserve ahead</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sun Jun 14 -->
+    <div class="day-card" id="day-jun14">
+      <div class="day-card-header">
+        <span class="day-date">Sun, Jun 14</span>
+        <span class="day-title">Venice proper + Murano afternoon</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-food">☕</div>
+          <div class="event-body">
+            <div class="event-time">Morning</div>
+            <div class="event-title">Breakfast at Hyatt or a Murano café</div>
+            <div class="event-note">Check if hotel breakfast is included. Otherwise, grab a cornetto and espresso standing at a local bar — the Italian way, and usually cheaper.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-see">⛪</div>
+          <div class="event-body">
+            <div class="event-time">Morning</div>
+            <div class="event-title">Vaporetto to Venice — St. Mark's Basilica</div>
+            <div class="event-note">Line 4.1/4.2 to Fondamente Nove, then Line 1 to San Marco. Arrive before 11 AM to beat the crowds. Free to enter — climb to the loggia for views over the Piazza. The golden mosaics inside are breathtaking.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Book the Pala d'Oro skip-the-line online</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-walk">🚶</div>
+          <div class="event-body">
+            <div class="event-title">Wander — Cannaregio or Dorsoduro</div>
+            <div class="event-note">Get gloriously lost after St. Mark's. Head toward Rialto Bridge for photos, then duck into quieter streets. Dorsoduro has the Peggy Guggenheim Collection if you want an art detour.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🍽️</div>
+          <div class="event-body">
+            <div class="event-time">Lunch</div>
+            <div class="event-title">Lunch in Venice — La Piazza or Osteria Da Bubi</div>
+            <div class="event-note">La Piazza (S. Marco 615 · 4.7 ⭐) — lobster pasta and seafood are standouts, right by St. Mark's. Or Osteria Da Bubi (Castello 5306 · 4.7 ⭐) for the legendary truffle fettuccine and octopus. Both GF-accommodating.</div>
+            <div class="tags"><span class="tag tag-res">📋 Reserve ahead for weekend lunch</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-see">🪟</div>
+          <div class="event-body">
+            <div class="event-time">Afternoon</div>
+            <div class="event-title">Return to Murano — glass factories</div>
+            <div class="event-note">Murano is world-famous for its glass. Visit the Museo del Vetro and watch a free live glassblowing demo at one of the fornaci. Perfect for authentic souvenirs — Fornace Mian and Davide Fuin are the real deal.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Avoid tourist-trap glass near main vaporetto stops</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🌙</div>
+          <div class="event-body">
+            <div class="event-title">Dinner — Osteria Al Duomo or La Fornace</div>
+            <div class="event-note">Osteria Al Duomo (Fond. Navagero 20/21 · 4.3 ⭐) — Murano's biggest trattoria with a lovely garden, great for a group. The duck ragù spaghetti is a standout. GF options available.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mon Jun 15 -->
+    <div class="day-card" id="day-jun15">
+      <div class="day-card-header">
+        <span class="day-date">Mon, Jun 15</span>
+        <span class="day-title">Early train home → NYC</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-travel">⏰</div>
+          <div class="event-body">
+            <div class="event-time">Very early morning</div>
+            <div class="event-title">Head to Venezia Santa Lucia station</div>
+            <div class="event-note">Allow 30–45 min from Murano to the station via vaporetto. Ask the hotel for an early grab-and-go breakfast or early checkout arrangement the night before.</div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="train-bar">
+          <span class="train-emoji">🚄</span>
+          <div class="train-info">
+            <div class="train-route">Trenitalia · Venezia S. Lucia → Milano Centrale</div>
+            <div class="train-detail">Allow 30–45 min vaporetto ride from Murano to the station</div>
+          </div>
+          <span class="train-time">6:48 AM → 9:15 AM</span>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-travel">✈️</div>
+          <div class="event-body">
+            <div class="event-time">From Milan</div>
+            <div class="event-title">Flight home — arrive NYC 5:40 PM</div>
+            <div class="event-note">You'll have ~2–3 hours in Milan after the train arrives at 9:15 AM. Confirm which airport — Malpensa (MXP) needs ~45 min via Malpensa Express from Centrale; Linate (LIN) is closer.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Malpensa requires the most transit time — plan ahead</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <strong>🌿 GF/DF tips for Italy:</strong> Always say <em>"senza glutine"</em> (gluten-free) and <em>"senza lattosio"</em> (dairy-free) when ordering. Most Italian kitchens accommodate when asked clearly — especially for pasta, risotto, and grilled proteins. For gelato, look for <em>sorbetto</em> (dairy-free) or ask which flavors are made with fruit and water. Gelateria dei Gracchi in Rome has confirmed GF + DF options and is a must-visit.
+  </div>
+
+</main>
+
+</body>
+</html>
