@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -297,12 +298,130 @@
   }
   .footer-note strong { font-weight: 500; color: var(--ink); }
 
+  /* EXTRA RESTAURANTS */
+  .extra-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem 1rem;
+    margin-top: 1.5rem;
+  }
+  .extra-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .extra-section-sub {
+    font-size: 11.5px;
+    color: var(--ink-light);
+    margin-bottom: 0.875rem;
+  }
+  .restaurant-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .restaurant-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 11px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    font-size: 12px;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .restaurant-chip:hover {
+    background: var(--parchment);
+    border-color: var(--border-strong);
+    color: var(--ink);
+  }
+  .chip-badge {
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+  .chip-badge-df { background: var(--cobalt-pale); color: var(--cobalt); }
+  .chip-badge-prati { background: var(--gold-pale); color: var(--gold); }
+
+  /* PACKING LIST */
+  .pack-body { padding: 0; }
+  .pack-category {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pack-category:last-child { border-bottom: none; }
+  .pack-category-title {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+  }
+  .pack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .pack-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+    color: var(--ink-mid);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 3px 9px;
+  }
+  .pack-item-warn {
+    background: #FDF0EB;
+    border-color: #E8B4A0;
+    color: #7A2E10;
+    font-weight: 500;
+  }
+  .pack-item-imp {
+    background: var(--gold-pale);
+    border-color: rgba(184,136,42,0.3);
+    color: var(--gold);
+    font-weight: 500;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 540px) {
     .hero { padding: 3rem 1.25rem 2rem; }
     .main { padding: 1.5rem 1rem 3rem; }
     .day-card-header { flex-wrap: wrap; }
-    .train-bar { flex-wrap: wrap; gap: 0.5rem; }
+
+    /* Train bar: time floats to top row, icon pins to top */
+    .train-bar { flex-wrap: wrap; gap: 0.5rem; align-items: flex-start; }
+    .train-time { order: -1; width: 100%; }
+    .train-emoji { margin-top: 2px; }
+
+    /* Font sizes +2px across the board */
+    body { font-size: 17px; }
+    .event-title { font-size: 16px; }
+    .event-note { font-size: 14.5px; }
+    .event-time { font-size: 13px; }
+    .day-date { font-size: 13px; }
+    .nav-pill { font-size: 14px; }
+    .train-route { font-size: 15px; }
+    .train-detail { font-size: 13px; }
+    .pack-item { font-size: 14px; }
+    .pack-category-title { font-size: 12.5px; }
+    .restaurant-chip { font-size: 14px; }
+    .city-dates { font-size: 14px; }
+    .city-accommodation { font-size: 14px; }
+    .tag { font-size: 12.5px; }
+    .footer-note { font-size: 14.5px; }
   }
 </style>
 </head>
@@ -319,7 +438,7 @@
 
 <nav class="nav-strip" aria-label="Jump to date">
   <span class="nav-label">Jump to</span>
-  <a class="nav-pill" href="#day-jun10"><span class="dot" style="--dot-color:#4A7BAF"></span> Jun 10</a>
+  <a class="nav-pill" href="#depart"><span class="dot" style="--dot-color:#B8882A"></span> Depart NYC</a>
   <a class="nav-pill" href="#day-jun11"><span class="dot" style="--dot-color:#C4622D"></span> Jun 11</a>
   <a class="nav-pill" href="#day-jun12"><span class="dot" style="--dot-color:#C4622D"></span> Jun 12</a>
   <a class="nav-pill" href="#day-jun13"><span class="dot" style="--dot-color:#C4622D"></span> Jun 13</a>
@@ -329,20 +448,156 @@
 
 <main class="main">
 
+  <!-- ═══════════════ DEPARTURE ═══════════════ -->
+  <section class="city-section" id="depart">
+    <div class="city-header" style="border-color: rgba(184,136,42,0.2);">
+      <h2 class="city-name" style="color: var(--gold);">New York → Italy</h2>
+      <span class="city-dates">Wed, Jun 10</span>
+    </div>
+    <p class="city-accommodation">✈️ Departing JFK · Make sure before you go!</p>
+
+    <!-- Packing List -->
+    <div class="day-card" id="packing">
+      <div class="day-card-header">
+        <span class="day-date">Jun 10 · Before heading out</span>
+        <span class="day-title">Packing Checklist</span>
+      </div>
+      <div class="pack-body">
+        <div class="pack-category">
+          <div class="pack-category-title">👗 Clothing</div>
+          <div class="pack-items">
+            <span class="pack-item">7 underwear</span>
+            <span class="pack-item">1 pajama set</span>
+            <span class="pack-item">2 lounge outfits <em style="font-size:10.5px;opacity:.7">(travel days Jun 9 & 15)</em></span>
+            <span class="pack-item">3–4 shirts</span>
+            <span class="pack-item">2 dresses</span>
+            <span class="pack-item">2–3 linen pants</span>
+            <span class="pack-item pack-imp">1 cardigan / light jacket <em style="font-size:10.5px">(60–65° mornings &amp; airport)</em></span>
+          </div>
+        </div>
+        <div class="pack-category">
+          <div class="pack-category-title">👟 Shoes</div>
+          <div class="pack-items">
+            <span class="pack-item">1 walking sneaker</span>
+            <span class="pack-item">1 cute flat</span>
+            <span class="pack-item">1 sandal <em style="font-size:10.5px;opacity:.7">(Airbnb &amp; hotel — no bare feet)</em></span>
+          </div>
+        </div>
+        <div class="pack-category">
+          <div class="pack-category-title">🧴 Toiletries</div>
+          <div class="pack-items">
+            <span class="pack-item">Toothbrush</span>
+            <span class="pack-item">Shampoo</span>
+            <span class="pack-item">Conditioner</span>
+            <span class="pack-item">Body wash</span>
+            <span class="pack-item">Body lotion</span>
+            <span class="pack-item pack-imp">Sunscreen ☀️</span>
+            <span class="pack-item" style="opacity:.65;font-size:11.5px;">No towels needed — Airbnb provides them</span>
+          </div>
+        </div>
+        <div class="pack-category">
+          <div class="pack-category-title">✨ Accessories</div>
+          <div class="pack-items">
+            <span class="pack-item">Sunglasses × 2</span>
+            <span class="pack-item pack-imp">Hat <em style="font-size:10.5px">(very hot — recommended if sun-sensitive)</em></span>
+            <span class="pack-item">Perfume</span>
+            <span class="pack-item">Makeup</span>
+            <span class="pack-item pack-warn">Minimal jewelry — don't be flashy</span>
+          </div>
+        </div>
+        <div class="pack-category">
+          <div class="pack-category-title">🎒 Bags &amp; Safety</div>
+          <div class="pack-items">
+            <span class="pack-item pack-warn">⚠️ No brand-name bags — pickpockets target logos</span>
+            <span class="pack-item">1 day bag <em style="font-size:10.5px;opacity:.7">(no easy-access pockets)</em></span>
+            <span class="pack-item">1 evening bag</span>
+            <span class="pack-item pack-warn">📍 Enable shared location</span>
+            <span class="pack-item pack-warn">📱 Back up your phone before leaving</span>
+          </div>
+        </div>
+        <div class="pack-category">
+          <div class="pack-category-title">📄 Documents &amp; Extras</div>
+          <div class="pack-items">
+            <span class="pack-item pack-imp">📋 Notarized letter allowing Jade to travel with a single parent</span>
+            <span class="pack-item">Snacks for the flight</span>
+            <span class="pack-item" style="opacity:.65;font-size:11.5px;">Pack snacks — limited food options at the gate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Departure Day Timeline -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-date">Wed, Jun 10</span>
+        <span class="day-title">Airport Day — JFK</span>
+      </div>
+      <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-travel">🚗</div>
+          <div class="event-body">
+            <div class="event-time">5:30 PM</div>
+            <div class="event-title">Head to the airport</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-travel">🛫</div>
+          <div class="event-body">
+            <div class="event-time">6:45 PM</div>
+            <div class="event-title">Arrive at JFK — check in</div>
+            <div class="event-note">Ask for a wheelchair for Grandma at check-in.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-travel">🛂</div>
+          <div class="event-body">
+            <div class="event-time">7:15 PM</div>
+            <div class="event-title">Security line</div>
+            <div class="event-note">Have passports ready to show before you reach the front.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-food">🍽️</div>
+          <div class="event-body">
+            <div class="event-time">8:00 – 9:00 PM</div>
+            <div class="event-title">Past security — eat something</div>
+            <div class="event-note">Limited options at the gate, so eat a meal here. Snacks you packed are good to have too.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="event-icon icon-travel">✈️</div>
+          <div class="event-body">
+            <div class="event-time">10:00 PM</div>
+            <div class="event-title">Board flight — Buon viaggio! 🇮🇹</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ MILAN ═══════════════ -->
   <section class="city-section milan" id="milan">
     <div class="city-header">
       <h2 class="city-name">Milan</h2>
-      <span class="city-dates">Wed, Jun 10</span>
+      <span class="city-dates">Thu, Jun 11</span>
     </div>
-    <p class="city-accommodation">📍 Milano Centrale area · Departure day</p>
+    <p class="city-accommodation">📍 Milano Centrale area · Arrival & transfer day</p>
 
     <div class="day-card" id="day-jun10">
       <div class="day-card-header">
-        <span class="day-date">Wed, Jun 10</span>
-        <span class="day-title">Lunch before the train</span>
+        <span class="day-date">Thu, Jun 11</span>
+        <span class="day-title">Arrive Milan · Lunch · Train to Rome</span>
       </div>
       <div class="day-body">
+        <div class="event">
+          <div class="event-icon icon-travel">✈️</div>
+          <div class="event-body">
+            <div class="event-time">12:05 PM</div>
+            <div class="event-title">Land at Milan-Malpensa (MXP)</div>
+            <div class="event-note">Take the Malpensa Express to Milano Centrale (~50 min, ~€13 pp). Trains run every 30 min from Terminal 1 — no reservation needed, buy tickets at airport kiosks or the Trenitalia app. Arrive Centrale ~1:15 PM.</div>
+            <div class="tags"><span class="tag tag-tip">💡 Follow signs to "Malpensa Express" in the terminal</span></div>
+          </div>
+        </div>
         <div class="event">
           <div class="event-icon icon-food">☕</div>
           <div class="event-body">
@@ -378,21 +633,21 @@
   <section class="city-section rome" id="rome">
     <div class="city-header">
       <h2 class="city-name">Rome</h2>
-      <span class="city-dates">Jun 10–13</span>
+      <span class="city-dates">Jun 11–13</span>
     </div>
     <p class="city-accommodation">📍 Airbnb Trifole · Via Candia, 55, Prati, 00192</p>
 
-    <!-- Wed Jun 10 -->
-    <div class="day-card" id="day-jun10-rome">
+    <!-- Thu Jun 11 -->
+    <div class="day-card" id="day-jun11-rome">
       <div class="day-card-header">
-        <span class="day-date">Wed, Jun 10</span>
+        <span class="day-date">Thu, Jun 11</span>
         <span class="day-title">Arrival night</span>
       </div>
       <div class="day-body">
         <div class="event">
           <div class="event-icon icon-sleep">🏠</div>
           <div class="event-body">
-            <div class="event-title">Arrive ~8:30 PM — check into Airbnb</div>
+            <div class="event-title">Arrive 8:26 PM — check into Airbnb</div>
             <div class="event-note">Grab a quick dinner nearby. La Cantina di Cesare (Via Candia 42 · 4.7 ⭐) is steps away and serves until 11 PM — a cozy, family-run Roman osteria. Or Forno Feliziani (Via Candia 61) if still open for a lighter bite.</div>
           </div>
         </div>
@@ -443,9 +698,9 @@
         <div class="event">
           <div class="event-icon icon-food">🌙</div>
           <div class="event-body">
-            <div class="event-time">7:30 PM</div>
-            <div class="event-title">Dinner — Tonnarello San Pietro</div>
-            <div class="event-note">Reservation confirmed for 5. Classic Roman trattoria — cacio e pepe, amatriciana, carbonara. Mention GF/DF needs when you confirm the reservation.</div>
+            <div class="event-time">7:00 PM</div>
+            <div class="event-title">Dinner — New Food Experience</div>
+            <div class="event-note">Via Germanico 190, 00192 Roma · Reservation confirmed for 5.</div>
             <div class="tags"><span class="tag tag-res">📋 Reservation confirmed</span></div>
           </div>
         </div>
@@ -675,6 +930,58 @@
 
   <div class="footer-note">
     <strong>🌿 GF/DF tips for Italy:</strong> Always say <em>"senza glutine"</em> (gluten-free) and <em>"senza lattosio"</em> (dairy-free) when ordering. Most Italian kitchens accommodate when asked clearly — especially for pasta, risotto, and grilled proteins. For gelato, look for <em>sorbetto</em> (dairy-free) or ask which flavors are made with fruit and water. Gelateria dei Gracchi in Rome has confirmed GF + DF options and is a must-visit.
+  </div>
+
+  <div class="extra-section">
+    <div class="extra-section-title">More GF spots to consider in Rome</div>
+    <div class="extra-section-sub">All gluten-free accommodating · tap to search on TheFork</div>
+    <div class="restaurant-chips">
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Tonnarello+Scala+Roma" target="_blank" rel="noopener">
+        🍝 Tonnarello Scala
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Pizza+en+Trevi+Roma" target="_blank" rel="noopener">
+        🍕 Pizza en Trevi
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=El+Maiz+Roma+Prati" target="_blank" rel="noopener">
+        🌽 El Maiz <span class="chip-badge chip-badge-prati">Prati</span>
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Pantha+rei+Roma" target="_blank" rel="noopener">
+        🍽️ Pantha rei
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Cimarra+4+Roma" target="_blank" rel="noopener">
+        🍽️ Cimarra 4
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Il+Tupliano+Nero+Roma" target="_blank" rel="noopener">
+        🍽️ Il Tupliano Nero
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=MYO+La+gelateria+Roma" target="_blank" rel="noopener">
+        🍦 MYO La Gelateria <span class="chip-badge chip-badge-df">DF</span>
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Crazy+Cat+Cafe+Roma" target="_blank" rel="noopener">
+        🐱 Crazy Cat Café
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Rosso+Vivo+Musei+Vaticani+Roma" target="_blank" rel="noopener">
+        🍕 Rosso Vivo Musei Vaticani
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=La+Soffitta+Renovatio+Roma" target="_blank" rel="noopener">
+        🍽️ La Soffitta Renovatio
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Otello+Roma" target="_blank" rel="noopener">
+        🍽️ Otello
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Hosteria+Ago+Lillo+Roma" target="_blank" rel="noopener">
+        🍽️ Hosteria Ago Lillo
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=PummaRe+Roma" target="_blank" rel="noopener">
+        🍕 PummaRe
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Barnum+Roma" target="_blank" rel="noopener">
+        🍽️ Barnum Roma
+      </a>
+      <a class="restaurant-chip" href="https://www.thefork.it/ricerca/?searchQuery=Pasta+in+Corso+Cavour+Prati+Roma" target="_blank" rel="noopener">
+        🍝 Pasta in Corso Cavour <span class="chip-badge chip-badge-prati">Prati</span>
+      </a>
+    </div>
   </div>
 
 </main>
